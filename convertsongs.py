@@ -159,8 +159,25 @@ def match_isrc_to_itunes_id(session, album, album_artist, isrc):
     except:
         return None
 
+def fetch_equivalent_itunes_id(session, song_id):
+    try:
+        request = session.get(f"https://amp-api.music.apple.com/v1/catalog/{country_code}/songs?filter[equivalents]={song_id}")
+        if request.status_code == 200:
+            data = json.loads(request.content.decode('utf-8'))
+            return data['data'][0]['id']
+        else:
+            return song_id
+    except:
+        return song_id
+
+
 # Function to add a song to a playlist
 def add_song_to_playlist(session, song_id, playlist_id):
+    song_id=str(song_id)
+    equivalent_itunes_id = fetch_equivalent_itunes_id(session, song_id)
+    if equivalent_itunes_id != song_id: 
+        print(f"{song_id} switched to equivalent -> {equivalent_itunes_id}")
+        song_id = equivalent_itunes_id
     try:   
         request = session.post(f"https://amp-api.music.apple.com/v1/me/library/playlists/{playlist_id}/tracks", json={"data":[{"id":f"{song_id}","type":"songs"}]})
         # Checking if the request is successful
