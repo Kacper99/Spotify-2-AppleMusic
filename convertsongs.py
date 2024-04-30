@@ -51,7 +51,7 @@ def create_apple_music_playlist(session, playlist_name):
 token = get_connection_data("token.dat", "\nPlease enter your Apple Music Authorization (Bearer token):\n")
 media_user_token = get_connection_data("media_user_token.dat", "\nPlease enter your media user token:\n")
 cookies = get_connection_data("cookies.dat", "\nPlease enter your cookies:\n")
-country_code = input("Enter the country code (e.g., FR, UK, US etc.): ")
+country_code = get_connection_data("country_code.dat", "\nPlease enter the country code (e.g., FR, UK, US etc.): ")
 
 # function to escape apostrophes
 def escape_apostrophes(s):
