@@ -35,7 +35,7 @@ python3 convertsongs.py playlistdir
 ```
 (Replace *yourplaylist.csv* by your own filename, the one you got from [Exportify](https://watsonbox.github.io/exportify/), or *playlistdir* by your own playlist directory name with all the `.csv` files you want to convert.)
 
-Follow the script prompt, and when asked, paste in each data. If your terminal have a paste character limit: please hardcode them OR put them into separate files named as following: `token.dat`, `media_user_token.dat` and `cookies.dat`.
+Follow the script prompt, and when asked, paste in each data. If your terminal have a paste character limit: please hardcode them OR put them into separate files named as following: `token.dat`, `media_user_token.dat`, `cookies.dat` and `country_code.dat`.
 
 Please note that **the best practice** is to put your connection data as it can be reuse in a near future. Keep in mind that, those connection data will expire and you might need to get them again.
 
